@@ -1,6 +1,8 @@
 /**
  * Created by nizural on 04/03/17.
  */
+import {Observable} from 'rxjs/Observable';
+
 export class CheckListModel{
 
   checkList: any;
@@ -8,6 +10,7 @@ export class CheckListModel{
 
   constructor(public title: string, public items: any[] = []){
     this.items = items;
+    this.checkList = Observable.create(observer => this.checkListObserver = observer);
   }
 
   /**
@@ -19,6 +22,7 @@ export class CheckListModel{
       title: item,
       checked: false
     });
+    this.checkListObserver.next(true);
   }
 
   /**
@@ -30,6 +34,7 @@ export class CheckListModel{
     if(index !== -1){
       this.items.splice(index, 1);
     }
+    this.checkListObserver.next(true);
   }
 
   /**
@@ -42,6 +47,7 @@ export class CheckListModel{
     if(index !== -1){
       this.items[index].title = title;
     }
+    this.checkListObserver.next(true);
   }
 
   /**
@@ -50,6 +56,7 @@ export class CheckListModel{
    */
   public setTitle(title): void{
     this.title = title;
+    this.checkListObserver.next(true);
   }
 
   /**
@@ -58,5 +65,6 @@ export class CheckListModel{
    */
   public toggleItem(item): void{
     item.checked = !item.checked;
+    this.checkListObserver.next(true);
   }
 }
