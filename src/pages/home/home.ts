@@ -20,7 +20,7 @@ export class HomePage {
 
   public ionViewDidLoad(): void{}
 
-  public addCheckList(): void{
+  public addChecklist(): void{
     this.alertController.create({
       title: 'New Checklist',
       message: 'Enter the name of your new checklist below:',
