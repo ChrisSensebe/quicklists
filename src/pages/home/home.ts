@@ -25,12 +25,12 @@ export class HomePage {
       title: 'New Checklist',
       message: 'Enter the name of your new checklist below:',
       inputs: [
-        {name: 'name'}
+        {name: '<Name'}
       ],
       buttons:[
-        {text: 'cancel'},
+        {text: '<Cancel'},
         {
-          text: 'save',
+          text: 'Save',
           handler: data => {
             let newCheckList = new CheckListModel(data.name);
             this.checkLists.push(newCheckList);
@@ -44,7 +44,28 @@ export class HomePage {
     }).present();
   }
 
-  public renameCheckList(checkList: CheckListModel): void{}
+  public renameCheckList(checkList: CheckListModel): void{
+    this.alertController.create({
+      title: 'Rename checklist',
+      message: 'Enter the new name of this checklist below:',
+      inputs: [
+        {name: 'name'}
+      ],
+      buttons: [
+        {text: 'Cancel'},
+        {
+          text: 'Save',
+          handler: data => {
+            let index = this.checkLists.indexOf(checkList);
+            if(index > -1){
+              this.checkLists[index].setTitle(data.name);
+              this.save();
+            }
+          }
+        }
+      ]
+    }).present();
+  }
 
   public viewCheckList(checkList: CheckListModel): void{}
 
