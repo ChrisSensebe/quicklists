@@ -6,7 +6,7 @@ export class CheckListModel{
   checkList: any;
   checkListObserver: any;
 
-  constructor(public title: string, public items: any[]){
+  constructor(public title: string, public items: any[] = []){
     this.items = items;
   }
 
