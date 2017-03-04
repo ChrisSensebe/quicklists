@@ -20,7 +20,29 @@ export class HomePage {
 
   public ionViewDidLoad(): void{}
 
-  public addCheckList(): void{}
+  public addCheckList(): void{
+    this.alertController.create({
+      title: 'New Checklist',
+      message: 'Enter the name of your new checklist below:',
+      inputs: [
+        {name: 'name'}
+      ],
+      buttons:[
+        {text: 'cancel'},
+        {
+          text: 'save',
+          handler: data => {
+            let newCheckList = new CheckListModel(data.name);
+            this.checkLists.push(newCheckList);
+            newCheckList.checkList.subscribe(update => {
+              this.save();
+            });
+            this.save();
+          }
+        }
+      ]
+    }).present();
+  }
 
   public renameCheckList(checkList: CheckListModel): void{}
 
