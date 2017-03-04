@@ -31,7 +31,7 @@ export class CheckListModel{
    */
   public removeItem(item: any): void{
     let index = this.items.indexOf(item);
-    if(index !== -1){
+    if(index > -1){
       this.items.splice(index, 1);
     }
     this.checkListObserver.next(true);
@@ -44,7 +44,7 @@ export class CheckListModel{
    */
   public renameItem(item: any, title:string): void{
     let index = this.items.indexOf(item);
-    if(index !== -1){
+    if(index > -1){
       this.items[index].title = title;
     }
     this.checkListObserver.next(true);
