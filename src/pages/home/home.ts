@@ -69,7 +69,13 @@ export class HomePage {
 
   public viewCheckList(checkList: CheckListModel): void{}
 
-  public removeCheckList(checkList: CheckListModel): void{}
+  public removeCheckList(checkList: CheckListModel): void{
+    let index = this.checkLists.indexOf(checkList);
+    if(index > -1){
+      this.checkLists.splice(index, 1);
+      this.save();
+    }
+  }
 
   public save(): void{}
 }
