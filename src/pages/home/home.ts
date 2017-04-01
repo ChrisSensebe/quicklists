@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController, Platform } from 'ionic-angular';
-import { CheckListPage } from '../check-list/check-list';
-import { CheckListModel } from '../../models/checklist-models';
-import { Data } from '../../providers/data';
-import { Keyboard } from 'ionic-native';
+import {Component} from "@angular/core";
+import {NavController, AlertController, Platform} from "ionic-angular";
+import {CheckListPage} from "../check-list/check-list";
+import {Data} from "../../providers/data";
+import {CheckListModel} from "../../models/checklist-models";
 
 @Component({
   selector: 'page-home',
@@ -22,10 +21,10 @@ export class HomePage {
     this.checkLists = [];
   }
 
-  public addChecklist(): void{
+  public addCheckList(): void{
     this.alertController.create({
-      title: 'New Checklist',
-      message: 'Enter the name of your new checklist below:',
+      title: 'New CheckList',
+      message: 'Enter the name of your new checkList below:',
       inputs: [
         {name: 'name'}
       ],
@@ -49,8 +48,8 @@ export class HomePage {
 
   public renameCheckList(checkList: CheckListModel): void{
     this.alertController.create({
-      title: 'Rename checklist',
-      message: 'Enter the new name of this checklist below:',
+      title: 'Rename checkList',
+      message: 'Enter the new name of this checkList below:',
       inputs: [
         {name: 'name'}
       ],
@@ -70,7 +69,7 @@ export class HomePage {
     }).present();
   }
 
-  public viewChecklist(checkList: CheckListModel): void{
+  public viewCheckList(checkList: CheckListModel): void{
     this.navCtrl.push(CheckListPage, {checkList: checkList});
   }
 

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>{{checkList.title}}</ion-title>
+    <ion-title>{{checkList?.title}}</ion-title>
     <ion-buttons end>
       <button ion-button
               icon-only
@@ -27,13 +27,13 @@
 
 <ion-content>
   <ion-list no-lines>
-    <ion-item-sliding *ngFor="let item of checkList.items">
+    <ion-item-sliding *ngFor="let item of checkList?.items">
       <ion-item>
         <ion-label>
           {{item.title}}
         </ion-label>
-        <ion-checkbox [checked]="item.checked"
-                      (click)="toggleItem(item)"></ion-checkbox>
+        <!--<ion-checkbox [checked]="item.checked"
+                      (click)="toggleItem(item)"></ion-checkbox>-->
       </ion-item>
       <ion-item-options>
         <button ion-button
