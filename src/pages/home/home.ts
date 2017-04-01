@@ -70,7 +70,7 @@ export class HomePage {
     }).present();
   }
 
-  public viewCheckList(checkList: CheckListModel): void{
+  public viewChecklist(checkList: CheckListModel): void{
     this.navCtrl.push(CheckListPage, {checkList: checkList});
   }
 
