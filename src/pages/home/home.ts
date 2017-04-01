@@ -18,7 +18,9 @@ export class HomePage {
               public alertController: AlertController,
               public platform: Platform) {}
 
-  public ionViewDidLoad(): void{}
+  public ionViewDidLoad(): void{
+    this.checkLists = [];
+  }
 
   public addChecklist(): void{
     this.alertController.create({
