@@ -82,6 +82,6 @@ export class HomePage {
   }
 
   public save(): void{
-    this.dataService.save(this.checkLists);
+    this.dataService.saveData(this.checkLists);
   }
 }

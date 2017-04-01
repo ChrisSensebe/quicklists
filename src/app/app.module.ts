@@ -5,6 +5,7 @@ import { HomePage } from '../pages/home/home';
 import {IntroPage} from "../pages/intro/intro";
 import {CheckListPage} from "../pages/check-list/check-list";
 import {Data} from "../providers/data";
+import {Storage} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {Data} from "../providers/data";
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Data
+    Data,
+    Storage
     ]
 })
 export class AppModule {}
