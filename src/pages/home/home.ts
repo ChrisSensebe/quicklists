@@ -3,6 +3,8 @@ import {NavController, AlertController, Platform} from "ionic-angular";
 import {CheckListPage} from "../check-list/check-list";
 import {Data} from "../../providers/data";
 import {CheckListModel} from "../../models/checklist-models";
+import {Storage} from "@ionic/storage";
+import {IntroPage} from "../intro/intro";
 
 @Component({
   selector: 'page-home',
@@ -15,7 +17,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public dataService: Data,
               public alertController: AlertController,
-              public platform: Platform) {
+              public platform: Platform,
+              public storage: Storage) {
 
     this.checkLists = [];
   }
@@ -23,6 +26,14 @@ export class HomePage {
   public ionViewDidLoad(): void{
     this.platform.ready()
       .then(() => {
+
+        this.storage.get('introShow').then((result) => {
+          if(!result){
+            this.storage.set('introShow', true);
+            this.navCtrl.setRoot(IntroPage);
+          }
+        });
+
         this.dataService.getData()
           .then((checkLists) => {
             if(checkLists){
