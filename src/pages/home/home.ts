@@ -40,7 +40,6 @@ export class HomePage {
               let savedCheckLists = JSON.parse(checkLists);
               savedCheckLists.forEach((savedCheckList) => {
                 let loadCheckList = new CheckListModel(savedCheckList.title, savedCheckList.items);
-                console.log(loadCheckList);
                 this.checkLists.push(loadCheckList);
                 loadCheckList.checkList.subscribe(update => {
                   this.save();
