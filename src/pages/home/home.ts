@@ -15,10 +15,29 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public dataService: Data,
               public alertController: AlertController,
-              public platform: Platform) {}
+              public platform: Platform) {
+
+    this.checkLists = [];
+  }
 
   public ionViewDidLoad(): void{
-    this.checkLists = [];
+    this.platform.ready()
+      .then(() => {
+        this.dataService.getData()
+          .then((checkLists) => {
+            if(checkLists){
+              let savedCheckLists = JSON.parse(checkLists);
+              savedCheckLists.forEach((savedCheckList) => {
+                let loadCheckList = new CheckListModel(savedCheckList.title, savedCheckList.items);
+                console.log(loadCheckList);
+                this.checkLists.push(loadCheckList);
+                loadCheckList.checkList.subscribe(update => {
+                  this.save();
+                })
+              });
+            }
+          });
+      })
   }
 
   public addCheckList(): void{
