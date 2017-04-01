@@ -67,7 +67,9 @@ export class HomePage {
     }).present();
   }
 
-  public viewCheckList(checkList: CheckListModel): void{}
+  public viewCheckList(checkList: CheckListModel): void{
+    this.navCtrl.push(CheckListPage, {checkList: checkList});
+  }
 
   public removeCheckList(checkList: CheckListModel): void{
     let index = this.checkLists.indexOf(checkList);

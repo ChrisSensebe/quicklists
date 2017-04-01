@@ -1,10 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      <img src="assets/images/logo.png" alt="">
+      <img src="assets/images/logo.png">
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addChecklist()">
+      <button ion-button icon-only
+              (click)="addChecklist()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,19 +14,24 @@
 
 <ion-content>
   <ion-list no-lines>
-    <ion-item-sliding>
-      <button ion-item (click)="viewChecklist(checklist)">
-        TITLE GOES HERE
-        <span>0 items</span>
+    <ion-item-sliding *ngFor="let checkList of checkLists">
+      <button ion-item
+              (click)="viewChecklist(checklist)">
+        {{checkList.title}}
+        <span>{{checkList.items.length}}</span>
       </button>
       <ion-item-options>
-        <button ion-button icon-only color="light" (click)="renameChecklist(checklist)">
+        <button ion-button
+                icon-only
+                color="light"
+                (click)="renameChecklist(checklist)">
           <ion-icon name="clipboard"></ion-icon>
-          Edit
         </button>
-        <button ion-button icon-only color="danger" (click)="removeChecklist(checklist)">
+        <button ion-button
+                icon-only
+                color="danger"
+                (click)="removeChecklist(checklist)">
           <ion-icon name="trash"></ion-icon>
-          Delete
         </button>
       </ion-item-options>
     </ion-item-sliding>
