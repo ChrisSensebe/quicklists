@@ -27,13 +27,14 @@ export class HomePage {
       title: 'New Checklist',
       message: 'Enter the name of your new checklist below:',
       inputs: [
-        {name: '<Name'}
+        {name: 'name'}
       ],
       buttons:[
-        {text: '<Cancel'},
+        {text: 'Cancel'},
         {
           text: 'Save',
           handler: data => {
+            console.log(data);
             let newCheckList = new CheckListModel(data.name);
             this.checkLists.push(newCheckList);
             newCheckList.checkList.subscribe(update => {
